@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Dropdown Menu</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .menu-container {
+            position: relative;
+        }
+        .menu-button {
+            background: linear-gradient(45deg, #8B0000, #8B0000);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
+            text-transform: uppercase;
+        }
+        .menu-button:hover {
+            background: linear-gradient(45deg, #A52A2A, #A52A2A);
+            transform: scale(1.05);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(139, 0, 0, 0.1);
+            border: 2px solid #8B0000;
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(139, 0, 0, 0.5);
+            z-index: 1;
+            width: 300px;
+            animation: fadeIn 0.5s ease;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+        .menu-item {
+            padding: 10px 20px;
+            position: relative;
+            overflow: hidden;
+            height: 50px;
+        }
+        .menu-item-inner {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/water1.svg') repeat-x;
+            animation: wave 5s infinite linear;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        @keyframes wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .menu-item:nth-child(1) { background: rgba(139, 0, 0, 0.2); }
+        .menu-item:nth-child(2) { background: rgba(165, 42, 42, 0.2); }
+        .menu-item:nth-child(3) { background: rgba(178, 34, 34, 0.2); }
+        .menu-item:nth-child(4) { background: rgba(220, 20, 60, 0.2); }
+        .menu-item:nth-child(5) { background: rgba(255, 0, 0, 0.2); }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <button class="menu-button" onclick="toggleMenu('dropdownMenu')">&#9776; Menu</button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="menu-item">
+                <div class="menu-item-inner">Section 1</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-inner">Section 2</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-inner">Section 3</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-inner">Section 4</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-inner">Section 5</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
